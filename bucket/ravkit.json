@@ -1,0 +1,34 @@
+{
+    "version": "1.0.9",
+    "description": "Free video, audio, image and PDF tools that run on your own computer.",
+    "homepage": "https://ravkit.theonefolio.com/desktop/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://ravkit.theonefolio.com/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Theonefolio/ravkit-releases/releases/download/v1.0.9/Ravkit_1.0.9_x64-setup.exe#/dl.7z",
+            "hash": "b66a74013ec097e489259e5138d1b2c70aa211ce48c0265bd73fba12f3acbd8e"
+        }
+    },
+    "pre_install": "Remove-Item -LiteralPath (Join-Path $dir '$PLUGINSDIR') -Recurse -Force -ErrorAction SilentlyContinue",
+    "shortcuts": [
+        [
+            "ravkit-desktop.exe",
+            "Ravkit Desktop"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/Theonefolio/ravkit-releases/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([0-9.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Theonefolio/ravkit-releases/releases/download/v$version/Ravkit_$version_x64-setup.exe#/dl.7z"
+            }
+        }
+    }
+}
